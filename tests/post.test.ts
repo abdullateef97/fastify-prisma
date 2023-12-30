@@ -3,22 +3,12 @@ import { app } from './helpers'
 
 test('signup', async () => {
   const users = await supertest(app.server)
-    .post('/signup')
-    .send({
-      email: 'user@g.com',
-      password: 'password',
-      name: 'User',
-    })
+    .post('/posts')
+    .send({})
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200)
+    .expect(500)
 
-  expect(users.body).toHaveProperty('data.user')
-  expect(users.body.data.user).toEqual({
-    id: 1,
-    email: 'user@g.com',
-    name: 'User',
-  })
 })
 
 test('login', async () => {

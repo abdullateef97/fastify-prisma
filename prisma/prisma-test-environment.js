@@ -1,3 +1,4 @@
+'use strict';
 // @ts-check
 const util = require('util')
 const { PrismaClient } = require('@prisma/client')
@@ -10,6 +11,7 @@ const {
 } = require('unique-names-generator')
 const exec = util.promisify(require('child_process').exec)
 
+// @ts-ignore
 class PrismaTestEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config)
@@ -22,12 +24,13 @@ class PrismaTestEnvironment extends NodeEnvironment {
     this.client = new PrismaClient()
     let url = `postgresql://postgres:password@localhost:5432/prisma?schema=${this.schema}`
     process.env.DATABASE_URL = url
+    // @ts-ignore
     this.global.process.env.DATABASE_URL = url
   }
 
   async setup() {
     // Push the state from your Prisma schema to your database (create tables & columns)
-    await exec(`yarn prisma db push --preview-feature`)
+    await exec(`npm run prisma db push --preview-feature`)
 
     return super.setup()
   }
