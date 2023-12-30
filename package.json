@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "ts-node src/index.ts",
+    "start": "node dist/src/index.js",
     "deploy": "npm install && npm run build && npm run db:migrate:prod",
     "test": "dotenv -e .env.test -- jest",
     "db:save": "prisma migrate dev --create-only --preview-feature",
