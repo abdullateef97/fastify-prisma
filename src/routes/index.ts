@@ -10,7 +10,6 @@ export const router: FastifyPluginCallback = (
 
   fastify.addHook('onRequest', (req, res, next) => {
     console.log('onRequest')
-    req.user = null
     next()
   })
 
