@@ -6,6 +6,7 @@ const start = async () => {
   await app.listen({
     port: envs.PORT
   })
+  console.log('app started');
   app.log.info(`app running on ${envs.HOST}:${envs.PORT}/`)
 }
 

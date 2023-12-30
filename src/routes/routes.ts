@@ -5,6 +5,11 @@ import { title } from 'process'
 type RouteConfig = Record<string, RouteOptions>
 
 const routes: RouteConfig = {
+  health: {
+    method: 'GET',
+    url: '/health',
+    handler: () => console.log("app health is fine")
+  },
   createPost: {
     method: 'POST',
     url: '/posts',

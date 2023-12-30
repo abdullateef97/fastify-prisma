@@ -9,7 +9,8 @@ export const router: FastifyPluginCallback = (
   fastify.decorateRequest('user', null)
 
   fastify.addHook('onRequest', (req, res, next) => {
-    console.log('onRequest')
+    console.log('onRequest');
+    console.log(req)
     next()
   })
 
